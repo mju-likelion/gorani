@@ -32,6 +32,10 @@ app.event("app_home_opened", async ({ event, client }) => {
   }
 });
 
+app.message("knock knock", async ({ message, say }) => {
+  await say(`_Who's there?_`);
+});
+
 (async () => {
   // Start your app
   await app.start(3000);

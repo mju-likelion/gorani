@@ -1,5 +1,6 @@
 import { App } from "@slack/bolt";
 import dotenv from "dotenv";
+import { getApplicantsInfo } from "./selenium";
 
 dotenv.config();
 
@@ -32,8 +33,13 @@ app.event("app_home_opened", async ({ event, client }) => {
   }
 });
 
-app.message("knock knock", async ({ message, say }) => {
+app.message("knock knock", async ({ say }) => {
   await say(`_Who's there?_`);
+});
+
+app.message("지원자 수", async ({ say }) => {
+  const number = (await getApplicantsInfo()).numberOfApplicants;
+  await say(`지금까지의 지원자 수는 ${number}명입니다.`);
 });
 
 (async () => {

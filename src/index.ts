@@ -38,8 +38,8 @@ app.message("knock knock", async ({ say }) => {
 });
 
 app.message("지원자 수", async ({ say }) => {
-  const number = (await getApplicantsInfo()).numberOfApplicants;
-  await say(`지금까지의 지원자 수는 ${number}명입니다.`);
+  const text = (await getApplicantsInfo()).numberOfApplicantsString;
+  await say(text);
 });
 
 (async () => {

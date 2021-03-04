@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function getApplicantsInfo() {
-  let numberOfApplicants;
+  let numberOfApplicantsString = "";
 
   const driver = await new Builder().forBrowser("chrome").build();
   try {
@@ -23,10 +23,12 @@ export async function getApplicantsInfo() {
     await driver
       .findElement(By.xpath('//*[@id="likelion_num"]/div[2]/a/button'))
       .sendKeys(Key.ENTER);
-    const users = await driver.findElement(
-      By.xpath('//*[@id="likelion_num"]/div[3]')
+    const strings = await driver.findElements(
+      By.xpath('//*[@id="likelion_num"]/div[2]/p')
     );
-    numberOfApplicants = (await users.getText()).split("\n").length / 4;
+    numberOfApplicantsString = `
+      ${await strings[0].getText()}\n${await strings[1].getText()}
+    `;
   } catch (error) {
     console.error(error);
   } finally {
@@ -34,6 +36,6 @@ export async function getApplicantsInfo() {
   }
 
   return {
-    numberOfApplicants,
+    numberOfApplicantsString,
   };
 }

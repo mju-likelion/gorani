@@ -6,7 +6,11 @@ dotenv.config();
 export async function getApplicantsInfo() {
   let numberOfApplicantsString = "";
 
-  const driver = await new Builder().forBrowser("chrome").build();
+  const driver = await new Builder()
+    .forBrowser("chrome")
+    .usingServer("http://selenium:4444/wd/hub")
+    .build();
+
   try {
     await driver.get("https://apply.likelion.org/accounts/login/?next=/apply/");
     await driver
@@ -26,9 +30,7 @@ export async function getApplicantsInfo() {
     const strings = await driver.findElements(
       By.xpath('//*[@id="likelion_num"]/div[2]/p')
     );
-    numberOfApplicantsString = `
-      ${await strings[0].getText()}\n${await strings[1].getText()}
-    `;
+    numberOfApplicantsString = `${await strings[0].getText()}\n${await strings[1].getText()}`;
   } catch (error) {
     console.error(error);
   } finally {
@@ -39,3 +41,7 @@ export async function getApplicantsInfo() {
     numberOfApplicantsString,
   };
 }
+
+(async function () {
+  console.log(await getApplicantsInfo());
+})();

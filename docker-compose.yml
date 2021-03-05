@@ -5,7 +5,7 @@ services:
     image: selenium/standalone-chrome
 
   gorani:
-    image: ndaemy/gorani:0.1.0
+    image: ndaemy/gorani:0.1.1
     depends_on:
       - selenium
     links:

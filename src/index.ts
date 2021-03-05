@@ -40,7 +40,8 @@ app.message("knock knock", async ({ say }) => {
 let lastSendMessage = "";
 let lastSendTime = 0;
 
-app.message("지원자 수", async ({ say }) => {
+app.message("지원자 수", async ({ message, say }) => {
+  console.log(message);
   if (lastSendMessage === "" || Date.now() - lastSendTime > 60000) {
     const text = (await getApplicantsInfo()).numberOfApplicantsString;
     lastSendMessage = text;

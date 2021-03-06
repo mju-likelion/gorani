@@ -8,7 +8,11 @@ export async function getApplicantsInfo() {
 
   const driver = await new Builder()
     .forBrowser("chrome")
-    .usingServer("http://selenium:4444/wd/hub")
+    .usingServer(
+      process.env.ENV === "production"
+        ? "http://selenium:4444/wd/hub"
+        : "http://localhost:4444/wd/hub"
+    )
     .build();
 
   try {

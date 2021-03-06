@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export async function getApplicantsInfo() {
-  let numberOfApplicantsString = "";
+let numberOfApplicantsString = "";
 
+async function getWebInfo() {
   const driver = await new Builder()
     .forBrowser("chrome")
     .usingServer(
@@ -40,12 +40,15 @@ export async function getApplicantsInfo() {
   } finally {
     await driver.quit();
   }
+}
 
+export async function initSelenium() {
+  await getWebInfo();
+  setInterval(getWebInfo, 180000);
+}
+
+export function getApplicantsInfo() {
   return {
     numberOfApplicantsString,
   };
 }
-
-(async function () {
-  console.log(await getApplicantsInfo());
-})();

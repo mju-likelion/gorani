@@ -29,12 +29,16 @@ function addBasicEvent(app: App) {
     await say(`_Who's there?_`);
   });
 
-  app.message("crying", async ({ say }) => {
+  app.message("gorani crying", async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
   });
 
-  app.message("울어", async ({ say }) => {
+  app.message("고라니 울어", async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
+  });
+
+  app.message("고라니 던져", async ({ say }) => {
+    await say(`${Math.ceil(Math.random() * 100)} 나왔습니다.`);
   });
 }
 

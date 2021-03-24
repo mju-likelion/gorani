@@ -25,10 +25,6 @@ function addBasicEvent(app: App) {
     }
   });
 
-  app.message("knock knock", async ({ say }) => {
-    await say(`_Who's there?_`);
-  });
-
   app.message("gorani cry", async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
   });

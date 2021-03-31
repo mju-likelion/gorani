@@ -33,8 +33,13 @@ function addBasicEvent(app: App) {
     await say("키야아아아악! 아아아아아악!");
   });
 
-  app.message("고라니 던져", async ({ message, say }) => {
-    await say(`${message.user} ${Math.ceil(Math.random() * 100)} 나왔습니다.`);
+  app.message("고라니 던져", async ({ client, message, say }) => {
+    const {
+      // @ts-expect-error
+      user: { real_name },
+      // @ts-expect-error
+    } = await client.users.info({ user: message.user });
+    await say(`${real_name}: ${Math.ceil(Math.random() * 100)} 나왔습니다.`);
   });
 }
 

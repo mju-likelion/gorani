@@ -33,7 +33,7 @@ function addBasicEvent(app: App) {
     await say("키야아아아악! 아아아아아악!");
   });
 
-  app.message("고라니 던져", async ({ body, message, say }) => {
+  app.message("고라니 던져", async ({ message, say }) => {
     await say(`${message.user} ${Math.ceil(Math.random() * 100)} 나왔습니다.`);
   });
 }

@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   gorani:
-    image: ndaemy/gorani:0.1.3
+    image: ndaemy/gorani:0.1.5
     ports:
       - 3000:3000

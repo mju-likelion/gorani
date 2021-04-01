@@ -25,11 +25,7 @@ function addBasicEvent(app: App) {
     }
   });
 
-  app.message("gorani cry", async ({ say }) => {
-    await say("키야아아아악! 아아아아아악!");
-  });
-
-  app.message("고라니 울어", async ({ say }) => {
+  app.message(/gorani cry|고라니 울어/, async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
   });
 

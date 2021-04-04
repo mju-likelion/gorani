@@ -1,5 +1,7 @@
 import { App } from "@slack/bolt";
 
+import randomMessage from "../lib/randomMessage";
+
 function addBasicEvent(app: App) {
   app.event("app_home_opened", async ({ event, client }) => {
     try {
@@ -38,25 +40,21 @@ function addBasicEvent(app: App) {
     await say(`${real_name}: ${Math.ceil(Math.random() * 100)} 나왔습니다.`);
   });
 
-  app.message("고라니 배틀", async ({client, message, say}) => {
+  app.message("고라니 배틀", async ({ client, message, say }) => {
     // @ts-expect-error
-    const opponent = message.text.split('고라니 배틀 ')[1];
+    const opponent = message.text.split("고라니 배틀 ")[1];
 
     const {
       // @ts-expect-error
-      user: {real_name},
+      user: { real_name },
       // @ts-expect-error
-    } = await client.users.info({user: message.user})
+    } = await client.users.info({ user: message.user });
 
     const winner = Math.floor(Math.random() * 2);
+    const winMessage = randomMessage(winner, real_name, opponent);
 
-    if (winner) {
-      // if winner equals 1
-      await say(`${opponent} 물에 빠져 우적댑니다! 승자는 ${real_name}!`)
-    } else {
-      await say(`${opponent} 독가스가 살포되었지만 방독면이 있었습니다! ${real_name} 패배!`)
-    }
-  })
+    await say(winMessage);
+  });
 }
 
 export default addBasicEvent;

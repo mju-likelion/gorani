@@ -27,11 +27,11 @@ function addBasicEvent(app: App) {
     }
   });
 
-  app.message(/gorani cry|고라니 울어/, async ({ say }) => {
+  app.message(/[Gg]orani [Cc]ry|고라니 울어/, async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
   });
 
-  app.message("고라니 던져", async ({ client, message, say }) => {
+  app.message(/[Gg]orani [Tt]hrow|고라니 던져/, async ({ client, message, say }) => {
     const {
       // @ts-expect-error
       user: { real_name },
@@ -40,9 +40,9 @@ function addBasicEvent(app: App) {
     await say(`${real_name}: ${Math.ceil(Math.random() * 100)} 나왔습니다.`);
   });
 
-  app.message("고라니 배틀", async ({ client, message, say }) => {
+  app.message(/[Gg]orani [Bb]attle|고라니 배틀/, async ({ client, message, say }) => {
     // @ts-expect-error
-    const opponent = message.text.split("고라니 배틀 ")[1];
+    const opponent = message.text.split(/[Gg]orani [Bb]attle |고라니 배틀 /)[1];
 
     const {
       // @ts-expect-error

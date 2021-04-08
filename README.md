@@ -4,6 +4,6 @@
 
 ## 명령어
 
-- 고라니 울어
-- 고라니 던져
-- 고라니 배틀
+- Gorani cry / 고라니 울어
+- Gorani throw / 고라니 던져
+- Gorani battle / 고라니 배틀

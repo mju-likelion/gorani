@@ -1,4 +1,4 @@
-import { App } from "@slack/bolt";
+import {App} from "@slack/bolt";
 import dotenv from "dotenv";
 
 import addBasicEvent from "./slack/addBasicEvent";

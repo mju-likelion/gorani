@@ -76,6 +76,25 @@ function addBasicEvent(app: App) {
       }]
     })
   })
+
+  app.message(/고라니 .*족보.*/, async ({say}) => {
+    const t = Math.floor(Math.random() * 4)
+
+    switch (t) {
+      case 3:
+        await say("니가 공부를 열심히 하셔야죠")
+        break;
+      case 2:
+        await say("undefined")
+        break;
+      case 1:
+        await say("null")
+        break;
+      case 0:
+      default:
+        await say("퉤")
+    }
+  })
 }
 
 export default addBasicEvent;

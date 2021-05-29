@@ -12,7 +12,7 @@ function calcTimeForPostAt(date: string, minusMinutes?: number) {
 
 async function getBirthdays(): Promise<Birthday[]> {
   return new Promise((resolve, reject) => {
-    const db = new sqlite3.Database("birthday2.sqlite3");
+    const db = new sqlite3.Database("birthday.sqlite3");
     db.all(
       `SELECT * FROM birthday WHERE birthmonth == ${
         new Date().getMonth() + 1
@@ -60,6 +60,7 @@ function addBirthdayEvents(app: App) {
             text: `${b.name}님\n생일 키에에엑\n축하 키에에엑\n합니다 키에에엑\n:tada::tada::cake::cake::birthday::birthday:`,
           });
         });
+        await say(`아임 레디\n두 번 이상 이 명령어를 치지 마세요`);
       } catch (e) {
         await say("DB에 문제가 있습니다. 키에엑..");
         console.error(e);
@@ -75,10 +76,11 @@ function addBirthdayEvents(app: App) {
         birthdays.map(async (b) => {
           await client.chat.scheduleMessage({
             channel: message.channel,
-            post_at: calcTimeForPostAt(b.birthday, 240 + 26),
+            post_at: calcTimeForPostAt(b.birthday, 60),
             text: `${b.name}님\n생일 키에에엑\n축하 키에에엑\n합니다 키에에엑\n:tada::tada::cake::cake::birthday::birthday:`,
           });
         });
+        await say(`아임 레디\n두 번 이상 이 명령어를 치지 마세요`);
       } catch (e) {
         await say("DB에 문제가 있습니다. 키에엑..");
         console.error(e);

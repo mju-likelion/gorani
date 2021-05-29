@@ -9,10 +9,12 @@
   "dependencies": {
     "@slack/bolt": "^3.2.0",
     "date-fns": "^2.22.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
+    "@types/sqlite3": "^3.1.7",
     "eslint": "^7.23.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",

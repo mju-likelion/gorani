@@ -29,7 +29,6 @@ function addBasicEvents(app: App) {
 
   app.message(/[Gg]orani [Cc]ry|고라니 울어/, async ({ say }) => {
     await say("키야아아아악! 아아아아아악!");
-    console.log("haha");
   });
 
   app.message(

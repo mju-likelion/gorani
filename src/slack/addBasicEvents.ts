@@ -65,30 +65,6 @@ function addBasicEvents(app: App) {
     }
   );
 
-  app.message(/[Gg]orani [Bb]irthday|고라니 생일/, async ({ say }) => {
-    // @ts-expect-error
-    await say({
-      blocks: [
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text:
-              "```" +
-              "김소현: 3월 2일\n" +
-              "홍승현: 3월 16일\n" +
-              "김한솔: 4월 21일\n" +
-              "이주호: 10월 31일\n" +
-              "유예빈: 11월 2일\n" +
-              "고승화: 11월 3일\n" +
-              "김진수: 11월 21일\n" +
-              "```",
-          },
-        },
-      ],
-    });
-  });
-
   app.message(/고라니 .*족보.*/, async ({ say }) => {
     const t = Math.floor(Math.random() * 4);
 

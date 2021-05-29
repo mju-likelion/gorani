@@ -1,7 +1,8 @@
-import {App} from "@slack/bolt";
+import { App } from "@slack/bolt";
 import dotenv from "dotenv";
 
-import addBasicEvent from "./slack/addBasicEvent";
+import addBasicEvents from "./slack/addBasicEvents";
+import addBirthdayEvents from "./slack/addBirthdayEvents";
 
 dotenv.config();
 
@@ -10,7 +11,8 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-addBasicEvent(app);
+addBasicEvents(app);
+addBirthdayEvents(app);
 
 (async () => {
   // Start your app

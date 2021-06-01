@@ -82,6 +82,12 @@ function addBasicEvents(app: App) {
         await say("퉤");
     }
   });
+
+  app.message(/고라니 공부.*/, async ({ say }) => {
+    await say(
+      `고라니는 맹수에게 쫓길 때\n뇌가 120% 활성화 되는 집중력을 보이는 법이지`
+    );
+  });
 }
 
 export default addBasicEvents;
